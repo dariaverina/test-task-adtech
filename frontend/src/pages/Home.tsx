@@ -1,6 +1,7 @@
 import Header from '../components/Header';
 import LinkForm from '../components/LinkForm';
 import LinkList from '../components/LinkList';
+import UniqueVisitors from '../components/UniqueVisitors'; 
 
 export default function Home() {
     return (
@@ -18,6 +19,10 @@ export default function Home() {
                         <h2 className="text-xl font-bold mb-4">Мои ссылки</h2>
                         <LinkList />
                     </div>
+                </div>
+
+                <div className="bg-white rounded-lg shadow p-6">
+                    <UniqueVisitors />
                 </div>
             </div>
         </div>

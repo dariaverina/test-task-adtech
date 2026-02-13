@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { linkService } from '../services/link';
 import type { Link } from '../types/link';
 import { formatLocalDateTime } from '../utils/date';
+import { Link as RouterLink } from 'react-router-dom'; 
 
 export default function LinkList() {
     const [links, setLinks] = useState<Link[]>([]);
@@ -147,6 +148,12 @@ export default function LinkList() {
                                     )}
                                 </div>
                             </div>
+                            <RouterLink 
+                                to={`/stats/${link.short_code}`}
+                                className="text-blue-600 hover:underline text-sm ml-4"
+                            >
+                                Статистика
+                            </RouterLink>
                             <button
                                 onClick={() => handleDelete(link.id)}
                                 className="text-red-500 hover:text-red-700 ml-2 cursor-pointer p-1 rounded-full hover:bg-red-50 transition-colors"

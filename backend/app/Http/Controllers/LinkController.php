@@ -7,6 +7,7 @@ use App\Http\Requests\CreateLinkRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\Click;
 
 class LinkController extends Controller
 {
@@ -50,6 +51,14 @@ class LinkController extends Controller
                 'expired_at' => $link->expires_at
             ], 410);
         }
+        Click::create([
+            'link_id' => $link->id,
+            'ip' => request()->ip(),
+            'user_agent' => request()->userAgent(),
+            'clicked_at' => now()
+        ]);
+
+        $link->increment('clicks_count');
         return redirect()->away($link->original_url);
     }
 

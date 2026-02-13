@@ -31,4 +31,9 @@ class Link extends Model
         $code = $this->custom_slug ?? $this->short_code;
         return url("/{$code}");
     }
+
+    public function clicks()
+    {
+        return $this->hasMany(Click::class);
+    }
 }
