@@ -37,23 +37,22 @@ Backend — Laravel 12, frontend — React с TypeScript и Vite.
 Команды для запуска без docker:
 
 - Backend (Laravel):
-cd backend
-composer install
-cp .env.example .env
-# настройте .env (база данных)
-php artisan key:generate
-php artisan migrate
-php artisan serve
+    cd backend
+    composer install
+    cp .env.example .env
+    настройте .env (база данных)
+    php artisan key:generate
+    php artisan migrate
+    php artisan serve
 
 - Frontend (React):
-cd frontend
-npm install
-npm run dev
+    cd frontend
+    npm install
+    npm run dev
 
 - Доступ после запуска:
-
-Backend: http://localhost:8000
-Frontend: http://localhost:5173
+    Backend: http://localhost:8000
+    Frontend: http://localhost:5173
 
 ---
 
