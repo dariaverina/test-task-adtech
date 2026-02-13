@@ -6,6 +6,7 @@ export default function LinkForm({ onLinkCreated }: { onLinkCreated: (shortUrl: 
     const [url, setUrl] = useState('');
     const [customSlug, setCustomSlug] = useState('');
     const [expiresAt, setExpiresAt] = useState('');
+    const [isCommercial, setIsCommercial] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
@@ -15,7 +16,10 @@ export default function LinkForm({ onLinkCreated }: { onLinkCreated: (shortUrl: 
         setError('');
 
         try {
-            const payload: any = { original_url: url };
+            const payload: any = { 
+                original_url: url,
+                is_commercial: isCommercial 
+            };
             
             if (customSlug.trim()) {
                 payload.custom_slug = customSlug.trim();
@@ -31,6 +35,7 @@ export default function LinkForm({ onLinkCreated }: { onLinkCreated: (shortUrl: 
             setUrl('');
             setCustomSlug('');
             setExpiresAt('');
+            setIsCommercial(false);
         } catch (err: any) {
             setError(err.response?.data?.message || 'Ошибка при создании ссылки');
         } finally {
@@ -95,6 +100,19 @@ export default function LinkForm({ onLinkCreated }: { onLinkCreated: (shortUrl: 
                 <p className="text-xs text-gray-500 mt-1">
                     Оставьте пустым для бессрочной ссылки
                 </p>
+            </div>
+
+            <div className="flex items-center">
+                <input
+                    type="checkbox"
+                    id="isCommercial"
+                    checked={isCommercial}
+                    onChange={(e) => setIsCommercial(e.target.checked)}
+                    className="mr-2"
+                />
+                <label htmlFor="isCommercial" className="text-sm">
+                    Коммерческая ссылка (с рекламой)
+                </label>
             </div>
             
             <button

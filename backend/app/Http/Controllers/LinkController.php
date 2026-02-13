@@ -59,6 +59,15 @@ class LinkController extends Controller
         ]);
 
         $link->increment('clicks_count');
+
+        if ($link->is_commercial) {
+            $randomImage = rand(1, 3);
+            
+            return response()->view('commercial-redirect', [
+                'original_url' => $link->original_url,
+                'randomImage' => $randomImage  
+            ]);
+        }
         return redirect()->away($link->original_url);
     }
 
@@ -79,6 +88,7 @@ class LinkController extends Controller
                     'short_url' => $link->short_url,
                     'expires_at' => $expiresAt,
                     'is_expired' => $isExpired,
+                    'is_commercial' => $link->is_commercial,
                     'status' => $expiresAt ? ($isExpired ? 'expired' : 'active') : 'active',
                     'created_at' => $link->created_at->format('d.m.Y H:i'),
                     'expires_at_formatted' => $expiresAt 
