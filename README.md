@@ -102,7 +102,7 @@ Frontend: http://localhost:5173
 ![Админка пользователя - общая статистика посетителей](./screenshots/unique-statistics.png)
 
 ### Реклама для коммерческих ссылок
-![Реклама для коммерческих ссылок](./screenshots/unique-statistics.png)
+![Реклама для коммерческих ссылок](./screenshots/ad.png)
 
 
 ---
